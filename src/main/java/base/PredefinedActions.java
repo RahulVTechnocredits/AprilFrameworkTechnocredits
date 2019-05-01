@@ -12,7 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
 import constant.ConstantPath;
 import customExceptions.ElementNotEnabledException;
@@ -21,7 +20,6 @@ public class PredefinedActions {
 
 	static WebDriver driver;
 
-	
 	public static void initialization(String url) {
 
 		System.setProperty("webdriver.chrome.driver", ConstantPath.CHROMEDRIVERexe);
@@ -30,12 +28,12 @@ public class PredefinedActions {
 		driver.get(url);
 
 	}
+
 	public static void closeBrowser() {
 
 		driver.quit();
 
 	}
-	
 
 	protected WebElement getElement(String locator) {
 
@@ -60,29 +58,29 @@ public class PredefinedActions {
 		}
 
 	}
-	
-	protected List<String> getTableElements(String locator){
-		
+
+	protected List<String> getTableElements(String locator) {
+
 		String locatorType = locator.split(":-")[0].replace("[", "").replace("]", "");
 		String locatorValue = locator.split(":-")[1];
-		ArrayList<String>al= new ArrayList<String>();
-		
-		int size= driver.findElements(By.xpath(locatorValue+"/td/a")).size();
-		System.out.println("Count of Items: "+size);
-		
-		for (int i = 2; i <= size+1; i++) {
-			
-			String itemName = driver.findElement(By.xpath(locatorValue+"[" + i + "]/td/a")).getText();
-			
+		ArrayList<String> al = new ArrayList<String>();
+
+		int size = driver.findElements(By.xpath(locatorValue + "/td/a")).size();
+		System.out.println("Count of Items: " + size);
+
+		for (int i = 2; i <= size + 1; i++) {
+
+			String itemName = driver.findElement(By.xpath(locatorValue + "[" + i + "]/td/a")).getText();
+
 			al.add(itemName);
-			
+
 		}
-		
-		//table/tbody/tr/td/a
-	//table/tbody/tr[2]/td/a
-		
+
+		// table/tbody/tr/td/a
+		// table/tbody/tr[2]/td/a
+
 		return al;
-		
+
 	}
 
 	private void setBorderVisibilty(WebElement element, boolean flag) {
@@ -98,13 +96,11 @@ public class PredefinedActions {
 		WebElement element = getElement(locator);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
-	//	setBorderVisibilty(element, false);
+		// setBorderVisibilty(element, false);
 		element.click();
 
 	}
 
-	
-	
 	protected void setText(String locator, String value) {
 		WebElement element = getElement(locator);
 		if (element.isEnabled()) {
@@ -116,21 +112,18 @@ public class PredefinedActions {
 
 	}
 
-	protected  String getText(String locator ) {
+	protected String getText(String locator) {
 		WebElement element = getElement(locator);
-		String actualString =element.getText();
+		String actualString = element.getText();
 		return actualString;
 	}
-	
-	protected  String getValue(String locator ) {
+
+	protected String getValue(String locator) {
 		WebElement element = getElement(locator);
-		String actualValue=element.getAttribute("value");
+		String actualValue = element.getAttribute("value");
 		return actualValue;
 	}
-	
-	
-	
-	
+
 	protected String getPageTitle() {
 		return driver.getTitle();
 	}
@@ -151,6 +144,7 @@ public class PredefinedActions {
 		}
 
 	}
+
 	public boolean ClickableElement(String locator) {
 		WebElement element = null;
 		try {
@@ -164,10 +158,9 @@ public class PredefinedActions {
 
 	}
 
-	
 	protected String acceptAlert() {
-		Alert alert =driver.switchTo().alert();
-		String actual=alert.getText();
+		Alert alert = driver.switchTo().alert();
+		String actual = alert.getText();
 		alert.accept();
 		return actual;
 	}

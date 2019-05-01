@@ -32,32 +32,50 @@ public class WelcomePage extends PredefinedActions {
 	public String getTitleOfWelcomePage() {
 		return getPageTitle();
 	}
+	
+	/**
+	 * @return visibility of element on welcomePage
+	 */
 
 	public boolean visibilityOnWelcomePage(String locator) {
 		return visibilityOfElement(locator);
 	}
 	
+	/** 
+	 *  @return  GMOButton is clickable on welcomePage
+	 */
 	public boolean GMOBtnclickableOnWelcomePage() {
 		return ClickableElement(propOperation.getValue("gmoOnlineText"));
 	}
 	
+	/** 
+	 *  @return GMO Online text is visible on welcomePage
+	 */
 	public boolean isGMOOnlineTextVisible() {
 		return visibilityOnWelcomePage(propOperation.getValue("gmoOnlineText"));
 		
 	}
-
+	/** 
+	 *  @return GMO Online text is visible on welcomePage
+	 */
 	public boolean isGMOOnlineVisible() {
 		return visibilityOnWelcomePage(propOperation.getValue("gmoOnlineBtn"));
 	}
-
+	/** 
+	 *  @return About Site button is visible on welcomePage
+	 */
 	public boolean isAboutSiteVisible() {
 		return visibilityOnWelcomePage(propOperation.getValue("aboutGmoSiteBtn"));
 	}
-
+	/** 
+	 *  @return About Browser Test Page is visible on welcomePage
+	 */
 	public boolean isBrowserTestPageVisible() {
 		return visibilityOnWelcomePage(propOperation.getValue("browserTestPageBtn"));
 	}
-	
+	/** 
+	 *  @see - click on GMO Online button
+	 */
 	public void clickOnGmoOnlineBtn() {
 		
 		 click(propOperation.getValue("gmoOnlineBtn"));

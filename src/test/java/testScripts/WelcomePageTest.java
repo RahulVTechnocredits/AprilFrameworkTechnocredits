@@ -27,6 +27,8 @@ public class WelcomePageTest extends TestBase{
 		close();
 	}
 	
+	//Verify after enter URL "GMO OnLine" word is displyed.
+
 	@Test(priority=0)
 	
 	public void verifyTextGMOOnlineOnWelcomePage() throws IOException {
