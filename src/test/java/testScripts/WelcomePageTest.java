@@ -1,7 +1,5 @@
 package testScripts;
 
-import java.io.IOException;
-
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -11,7 +9,7 @@ public class WelcomePageTest extends TestBase{
 	
 	@Test(priority=-1)
 	
-	public void verifyBtnVisibilityOnWelcomePage() throws IOException {
+	public void verifyBtnVisibilityOnWelcomePage() {
 		
 		start();
 		
@@ -31,7 +29,7 @@ public class WelcomePageTest extends TestBase{
 
 	@Test(priority=0)
 	
-	public void verifyTextGMOOnlineOnWelcomePage() throws IOException {
+	public void verifyTextGMOOnlineOnWelcomePage()  {
 		start();
 		WelcomePage welcomePage=WelcomePage.getInstance();
 		SoftAssert softassert = new SoftAssert();
@@ -44,7 +42,7 @@ public class WelcomePageTest extends TestBase{
 	
 	@Test(priority=2)
 	
-	public void verifyBtnGMOOnlineisclickableOnWelcomePage() throws IOException {
+	public void verifyBtnGMOOnlineisclickableOnWelcomePage() {
 		start();
 		WelcomePage welcomePage=WelcomePage.getInstance();
 		SoftAssert softassert = new SoftAssert();

@@ -1,18 +1,21 @@
 package testScripts;
 
-import java.io.IOException;
+import org.openqa.selenium.WebDriver;
 
 import base.PredefinedActions;
-import pages.WelcomePage;
+
 
 public class TestBase {
-
+	private WebDriver driver;
 	
-	void start() throws IOException {
-		PredefinedActions.initialization("https://demo.borland.com/gmopost/");
+	void start()  {
+		driver =PredefinedActions.initialization("https://demo.borland.com/gmopost/");
 	}
 	
-	void close() throws IOException {
-		PredefinedActions.closeBrowser();
+	void close()  {
+		driver=PredefinedActions.closeBrowser();
+	}
+	void back() {
+		driver.navigate().back();
 	}
 }

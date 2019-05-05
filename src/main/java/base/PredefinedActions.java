@@ -20,18 +20,20 @@ public class PredefinedActions {
 
 	static WebDriver driver;
 
-	public static void initialization(String url) {
+	public static WebDriver initialization(String url) {
 
 		System.setProperty("webdriver.chrome.driver", ConstantPath.CHROMEDRIVERexe);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(url);
+		return driver;
 
 	}
 
-	public static void closeBrowser() {
+	public static WebDriver closeBrowser() {
 
 		driver.quit();
+		return driver;
 
 	}
 
@@ -61,7 +63,7 @@ public class PredefinedActions {
 
 	protected List<String> getTableElements(String locator) {
 
-		String locatorType = locator.split(":-")[0].replace("[", "").replace("]", "");
+		//String locatorType = locator.split(":-")[0].replace("[", "").replace("]", "");
 		String locatorValue = locator.split(":-")[1];
 		ArrayList<String> al = new ArrayList<String>();
 
@@ -76,12 +78,11 @@ public class PredefinedActions {
 
 		}
 
-		// table/tbody/tr/td/a
-		// table/tbody/tr[2]/td/a
-
 		return al;
 
 	}
+	
+	
 
 	private void setBorderVisibilty(WebElement element, boolean flag) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -145,7 +146,7 @@ public class PredefinedActions {
 
 	}
 
-	public boolean ClickableElement(String locator) {
+	protected boolean ClickableElement(String locator) {
 		WebElement element = null;
 		try {
 			element = getElement(locator);

@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import pages.OnlineCatalog;
+import pages.ProductsPage;
 import pages.WelcomePage;
 
 public class OnlineCatalogTest extends TestBase {
@@ -15,7 +16,7 @@ public class OnlineCatalogTest extends TestBase {
 	// visible and clickable.
 
 	@Test(enabled = false)
-	public void verifyButtonsResetFormAndPlaceAndOrderOnOnlineCatalogPage() throws IOException {
+	public void verifyButtonsResetFormAndPlaceAndOrderOnOnlineCatalogPage()  {
 
 		start();
 		WelcomePage welcomePage = WelcomePage.getInstance();
@@ -42,8 +43,8 @@ public class OnlineCatalogTest extends TestBase {
 	// Verify using 'Reset Form' user is able to Reset filled value for 'OnLine
 	// Catalog' form.
 
-	@Test
-	public void verifyUserisAbleToResetfilledValueUsingResetFormBtnOnOnlineCatalogPage() throws IOException {
+	@Test(enabled = false)
+	public void verifyUserisAbleToResetfilledValueUsingResetFormBtnOnOnlineCatalogPage() {
 		start();
 		WelcomePage welcomePage = WelcomePage.getInstance();
 		SoftAssert softassert = new SoftAssert();
@@ -72,7 +73,7 @@ public class OnlineCatalogTest extends TestBase {
 	// Verify user is not able to place an order without selecting any products.
 
 	@Test(enabled = false)
-	public void verifyUserisUnableToPlaceOrderWithoutSelectingProductOnOnlineCatalogPage() throws IOException {
+	public void verifyUserisUnableToPlaceOrderWithoutSelectingProductOnOnlineCatalogPage() {
 
 		start();
 		WelcomePage welcomePage = WelcomePage.getInstance();
@@ -108,6 +109,66 @@ public class OnlineCatalogTest extends TestBase {
 		int actual = 6;
 		Assert.assertEquals(actual, expected, "size of elements is not matching");
 		System.out.println(al);
+		close();
+	}
+	
+	//Verify all the 6 Item names are clickable and redirect on correct page.
+
+	@Test
+	public void verify6ItemsAreClickableAndRedirectsToProductsPage() {
+		start();
+		WelcomePage welcomePage = WelcomePage.getInstance();
+		SoftAssert softassert = new SoftAssert();
+		OnlineCatalog onlineCatalogPage = OnlineCatalog.getInstance();
+		ProductsPage productsPage = ProductsPage.getInstance();
+
+		boolean gmoBtnVisibleFlag = welcomePage.isGMOOnlineVisible();
+		softassert.assertTrue(gmoBtnVisibleFlag);
+		welcomePage.clickOnGmoOnlineBtn();
+		
+		boolean flag1=onlineCatalogPage.domeTentLinkClikable();
+		softassert.assertTrue(flag1);
+		onlineCatalogPage.clickdomeTentLink();
+		boolean domeTentProductFlag=productsPage.isdomeTentProductNameTextVisible();
+		softassert.assertTrue(domeTentProductFlag);
+		back();
+		
+		boolean flag2=onlineCatalogPage.blackpackLinkClikable();
+		softassert.assertTrue(flag2);
+		onlineCatalogPage.clickBackpackLink();
+		boolean backpacksProductFlag=productsPage.isBackpackProductNameTextVisible();
+		softassert.assertTrue(backpacksProductFlag);
+		back();
+		
+		boolean flag3=onlineCatalogPage.GlassesLinkClikable();
+		softassert.assertTrue(flag3);
+		onlineCatalogPage.clickSunGlassesLink();
+		boolean sunGlassesProductFlag=productsPage.isGlassesProductNameTextVisible();
+		softassert.assertTrue(sunGlassesProductFlag);
+		back();
+		
+		boolean flag4=onlineCatalogPage.hikingBootsLinkClikable();
+		softassert.assertTrue(flag4);
+		onlineCatalogPage.clickHinkingBootsLink();
+		boolean hinkingBootsProductFlag=productsPage.isHinkingBootsProductNameTextVisible();
+		softassert.assertTrue(hinkingBootsProductFlag);
+		back();
+		
+		boolean flag5=onlineCatalogPage.paddedSocksLinkClikable();
+		softassert.assertTrue(flag5);
+		onlineCatalogPage.clickPaddedSocksLink();
+		boolean paddedSocksProductFlag=productsPage.isSocksProductNameTextVisible();
+		softassert.assertTrue(paddedSocksProductFlag);
+		back();
+		
+		boolean flag6=onlineCatalogPage.shortsLinkClickable();
+		softassert.assertTrue(flag6);
+		onlineCatalogPage.clickBackCountryShortsLink();
+		boolean shortsProductFlag=productsPage.isCountryShortsProductNameTextVisible();
+		softassert.assertTrue(shortsProductFlag);
+		softassert.assertAll();
+		back();
+		
 		close();
 	}
 }

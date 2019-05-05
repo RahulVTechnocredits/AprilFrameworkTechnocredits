@@ -16,10 +16,15 @@ public class WelcomePage extends PredefinedActions {
 
 	}
 
-	public static WelcomePage getInstance() throws IOException {
+	public static WelcomePage getInstance() {
 
 		if (welcomePage == null) {
-			welcomePage = new WelcomePage();
+			try {
+				welcomePage = new WelcomePage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return welcomePage;
 	}
